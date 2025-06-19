@@ -1,0 +1,10 @@
+.toggle-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.toggle-button div {
+  align-content: center;
+}
