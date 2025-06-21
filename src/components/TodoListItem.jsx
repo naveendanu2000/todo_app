@@ -12,7 +12,7 @@ const TodoListItem = ({ item }) => {
       style={
         dark
           ? { backgroundColor: "#481E14", color: "white" }
-          : { backgroundColor: "#acffd9e8" }
+          : { backgroundColor: "#000000", color: "white" }
       }
     >
       <div className={` col-1`}>
@@ -39,7 +39,7 @@ const TodoListItem = ({ item }) => {
           class="bi bi-check2-circle"
           style={
             item.completed
-              ? { color: "green", fontSize: "1.5rem", fontWeight: "bold" }
+              ? { color: "#acffd9e8", fontSize: "1.5rem", fontWeight: "bold" }
               : { fontSize: "1.5rem" }
           }
         ></i>

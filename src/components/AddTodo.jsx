@@ -58,7 +58,11 @@ const AddTodo = () => {
           role="button"
           onClick={handleAddTodoItem}
           className="btn btn-success"
-          style={dark ? { backgroundColor: "#692414", border: "none" } : {}}
+          style={
+            dark
+              ? { backgroundColor: "#692414", border: "none" }
+              : { backgroundColor: "black" }
+          }
         >
           Add
         </button>

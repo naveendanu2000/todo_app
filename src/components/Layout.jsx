@@ -28,7 +28,7 @@ const Layout = () => {
           className="rounded-bottom-4 position-fixed top-0 w-100 z-1 shadow"
           style={
             dark
-              ? { backgroundColor: "#000000e0" }
+              ? { backgroundColor: "#000000cc" }
               : { backgroundColor: "#acffd9e8" }
           }
         >
@@ -39,11 +39,11 @@ const Layout = () => {
         <AddTodo />
 
         <div
-          className="rounded-top-4 position-fixed bottom-0 w-100 z-1 shadow px-5"
+          className="rounded-top-4 position-fixed bottom-0 z-1 translate-middle-x shadow px-5"
           style={
             dark
-              ? { backgroundColor: "#000000e0" }
-              : { backgroundColor: "#acffd9e8" }
+              ? { backgroundColor: "#000000ed", left: "47.38%", width: "92%" }
+              : { backgroundColor: "#acffd9e8", left: "47.38%", width: "92%" }
           }
         >
           <Footer />
