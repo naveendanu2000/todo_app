@@ -2,7 +2,7 @@ import TodoList from "./TodoList";
 
 const TodoMain = () => {
   return (
-    <div className="h-100 p-5" style={{marginTop: "172px"}}>
+    <div className="h-100 p-5" style={{marginTop: "9rem", marginBottom: "8rem"}}>
       <TodoList />
     </div>
   );

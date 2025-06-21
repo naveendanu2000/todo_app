@@ -10,7 +10,10 @@ const Layout = () => {
     <div>
       <ThemeProvider>
         <TodoDataProvider>
-          <div className="rounded-bottom-4 position-fixed top-0 w-100 z-1 shadow">
+          <div
+            className="rounded-bottom-4 position-fixed top-0 w-100 z-1 shadow"
+            style={{ backgroundColor: "#ffffffed" }}
+          >
             <Header />
             <TodoToolBar />
           </div>
