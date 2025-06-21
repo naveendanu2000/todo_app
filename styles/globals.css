@@ -8,3 +8,25 @@
 .toggle-button div {
   align-content: center;
 }
+
+.add-todo {
+  position: fixed;
+  bottom: 2rem;
+  width: 80%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+}
+
+#message,
+#search {
+  border: 0.5px solid rgba(255, 255, 255, 0);
+}
+
+#search:focus{
+  outline: none;
+  border: 0.5px solid green;
+}
+
+#message:focus {
+  outline: none;
+}
