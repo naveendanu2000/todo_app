@@ -3,6 +3,7 @@ import { TodoDataProvider } from "../context/TodoDataContext";
 import AddTodo from "./AddTodo";
 import Header from "./Header";
 import TodoToolBar from "./TodoToolbar";
+import TodoMain from "./TodoMain";
 
 const Layout = () => {
   return (
@@ -13,6 +14,7 @@ const Layout = () => {
             <Header />
             <TodoToolBar />
           </div>
+          <TodoMain />
           <AddTodo />
         </TodoDataProvider>
       </ThemeProvider>

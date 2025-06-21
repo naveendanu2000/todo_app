@@ -3,38 +3,70 @@ import { createContext, useEffect, useState } from "react";
 export const TodoDataContext = createContext();
 
 export const TodoDataProvider = ({ children }) => {
-  const [filter, setFilter] = useState({ important: true, completed: true });
+  const [filter, setFilter] = useState({
+    all: true,
+    important: false,
+    completed: false,
+    todo: false,
+  });
   const [todoList, setTodoList] = useState([]);
   const [copyTodo, setCopyTodo] = useState([]);
 
   //Filter Operations
-  const toggleAll = () => {
-    if (!filter.completed && filter.important) {
-      setFilter((prev) => ({ ...prev, completed: true }));
-    } else if (filter.completed && !filter.important) {
-      setFilter((prev) => ({ ...prev, important: true }));
-    } else if (filter.completed === filter.important) {
-      setFilter((prev) => ({
-        completed: !prev.completed,
-        important: !prev.important,
-      }));
-    }
-  };
+  // const toggleAll = () => {
+  //   if (!filter.completed && filter.important) {
+  //     setFilter((prev) => ({ ...prev, completed: true }));
+  //   } else if (filter.completed && !filter.important) {
+  //     setFilter((prev) => ({ ...prev, important: true }));
+  //   } else if (filter.completed === filter.important) {
+  //     setFilter((prev) => ({
+  //       completed: !prev.completed,
+  //       important: !prev.important,
+  //     }));
+  //   }
+  // };
 
   useEffect(() => {
+    if (filter.all) {
+      setCopyTodo(todoList.filter((item) => item));
+    }
+    if (filter.important) {
+      setCopyTodo(todoList.filter((item) => item.important));
+    }
+    if (filter.important && filter.completed) {
+      setCopyTodo(todoList.filter((item) => item.important && item.completed));
+    }
     if (filter.completed) {
       setCopyTodo(todoList.filter((item) => item.completed));
-    } else if (filter.important) {
-      setCopyTodo(todoList.filter((item) => item.important));
-    } else if (filter.completed && filter.important) {
-      setCopyTodo(todoList.filter((item) => item.completed && item.important));
-    } else {
+    }
+    if (filter.todo) {
       setCopyTodo(todoList.filter((item) => !item.completed));
     }
+    if (filter.important && filter.todo) {
+      setCopyTodo(todoList.filter((item) => item.important && item.todo));
+    }
+    console.log(todoList);
   }, [filter, todoList]);
 
   const toggleFilter = (key) => {
-    setFilter((prev) => ({ ...prev, [key]: !prev[key] }));
+    if (key === "all") {
+      if (!filter.all)
+        setFilter({
+          all: true,
+          completed: false,
+          important: false,
+          todo: false,
+        });
+      else
+        setFilter({
+          all: false,
+          completed: false,
+          important: false,
+          todo: true,
+        });
+    } else {
+      setFilter((prev) => ({ ...prev, [key]: !prev[key], all: false }));
+    }
   };
 
   //CRUD operations
@@ -53,6 +85,16 @@ export const TodoDataProvider = ({ children }) => {
       ...prev,
       { id: nextId, message: message, important: important, completed: false },
     ]);
+
+    console.log(message, important, "called");
+  };
+
+  const toggleCompleted = (id) => {
+    setTodoList((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, completed: !item.completed } : item
+      )
+    );
   };
 
   const deleteTodoItem = (id) => {
@@ -61,7 +103,14 @@ export const TodoDataProvider = ({ children }) => {
 
   return (
     <TodoDataContext.Provider
-      value={{ filter, toggleFilter, toggleAll, addTodoItem, copyTodo, deleteTodoItem }}
+      value={{
+        filter,
+        toggleFilter,
+        addTodoItem,
+        copyTodo,
+        deleteTodoItem,
+        toggleCompleted,
+      }}
     >
       {children}
     </TodoDataContext.Provider>

@@ -5,11 +5,13 @@ import TodoListItem from "./TodoListItem";
 const TodoList = () => {
   const { copyTodo } = useContext(TodoDataContext);
 
-  <div>
-    {copyTodo.map((item) => (
-      <TodoListItem item={item} />
-    ))}
-  </div>;
+  return(
+    <div>
+      {copyTodo.map((item) => (
+        <TodoListItem item={item} />
+      ))}
+    </div>
+  );
 };
 
 export default TodoList;
