@@ -12,7 +12,7 @@ const Layout = () => {
         <TodoDataProvider>
           <div
             className="rounded-bottom-4 position-fixed top-0 w-100 z-1 shadow"
-            style={{ backgroundColor: "#ffffffed" }}
+            style={{ backgroundColor: "#acffd9e8" }}
           >
             <Header />
             <TodoToolBar />

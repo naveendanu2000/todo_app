@@ -16,12 +16,16 @@ const AddTodo = () => {
   };
 
   return (
-    <div className="row p-3 my-3 mx-5 rounded-4 border add-todo shadow">
+    <div
+      className="row p-3 my-3 mx-5 rounded-4 border add-todo shadow"
+      style={{ backgroundColor: "#acffd9e8" }}
+    >
       <input
         className="col-9 text-center border-0"
         type="text"
         id="message"
         value={message}
+        style={{ backgroundColor: "#acffd9e8" }}
         placeholder="Enter Todo Item"
         onChange={(e) => setMessage(e.target.value)}
       />

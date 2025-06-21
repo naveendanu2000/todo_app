@@ -6,7 +6,10 @@ const TodoToolBar = () => {
 
   return (
     <div className="row text-center px-5">
-      <div className="col-8" style={{ padding: "1.5rem 2rem" }}>
+      <div
+        className="col-8"
+        style={{ padding: "1.5rem 2rem", backgroundColor: "#acffd9e8" }}
+      >
         <input
           placeholder="Search"
           id="search"
