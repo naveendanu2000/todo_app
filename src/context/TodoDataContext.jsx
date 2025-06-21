@@ -12,20 +12,6 @@ export const TodoDataProvider = ({ children }) => {
   const [todoList, setTodoList] = useState([]);
   const [copyTodo, setCopyTodo] = useState([]);
 
-  //Filter Operations
-  // const toggleAll = () => {
-  //   if (!filter.completed && filter.important) {
-  //     setFilter((prev) => ({ ...prev, completed: true }));
-  //   } else if (filter.completed && !filter.important) {
-  //     setFilter((prev) => ({ ...prev, important: true }));
-  //   } else if (filter.completed === filter.important) {
-  //     setFilter((prev) => ({
-  //       completed: !prev.completed,
-  //       important: !prev.important,
-  //     }));
-  //   }
-  // };
-
   useEffect(() => {
     if (filter.all) {
       setCopyTodo(todoList.filter((item) => item));
