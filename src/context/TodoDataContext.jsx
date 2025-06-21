@@ -36,16 +36,15 @@ export const TodoDataProvider = ({ children }) => {
     if (filter.important && filter.completed) {
       setCopyTodo(todoList.filter((item) => item.important && item.completed));
     }
+    if (filter.important && filter.todo) {
+      setCopyTodo(todoList.filter((item) => item.important && item.todo));
+    }
     if (filter.completed) {
       setCopyTodo(todoList.filter((item) => item.completed));
     }
     if (filter.todo) {
       setCopyTodo(todoList.filter((item) => !item.completed));
     }
-    if (filter.important && filter.todo) {
-      setCopyTodo(todoList.filter((item) => item.important && item.todo));
-    }
-    console.log(todoList);
   }, [filter, todoList]);
 
   const toggleFilter = (key) => {
