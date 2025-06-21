@@ -16,7 +16,6 @@ const Footer = () => {
   return (
     <div
       className="row px-5 py-4 text-center"
-      style={dark ? {} : { backgroundColor: "#acffd996" }}
     >
       <div className="col">Total: {allCount}</div>
       <div className="col">Completed: {completedCount}</div>

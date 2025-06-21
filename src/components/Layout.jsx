@@ -43,7 +43,7 @@ const Layout = () => {
           style={
             dark
               ? { backgroundColor: "#000000ed", left: "47.38%", width: "92%" }
-              : { backgroundColor: "#acffd9e8", left: "47.38%", width: "92%" }
+              : { backgroundColor: "#acffd9f0", left: "47.38%", width: "92%" }
           }
         >
           <Footer />
