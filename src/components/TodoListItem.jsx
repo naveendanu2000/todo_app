@@ -1,11 +1,20 @@
 import { useContext } from "react";
 import { TodoDataContext } from "../context/TodoDataContext";
+import { ThemeContext } from "../context/ThemeContext";
 
 const TodoListItem = ({ item }) => {
   const { deleteTodoItem, toggleCompleted } = useContext(TodoDataContext);
+  const { dark } = useContext(ThemeContext);
 
   return (
-    <div className="row my-3 mx-5 py-3 px-5 rounded-2 shadow">
+    <div
+      className="row my-3 mx-5 py-3 px-5 rounded-2 shadow"
+      style={
+        dark
+          ? { backgroundColor: "#481E14", color: "white" }
+          : { backgroundColor: "#acffd9e8" }
+      }
+    >
       <div className={` col-1`}>
         <i
           className={`${
@@ -21,7 +30,7 @@ const TodoListItem = ({ item }) => {
         {item.message}
       </div>
       <div
-        className="col-1 text-center"
+        className="col-1 text-end"
         onClick={() => {
           toggleCompleted(item.id);
         }}
@@ -36,12 +45,19 @@ const TodoListItem = ({ item }) => {
         ></i>
       </div>
       <div
-        className="col-1 text-center"
+        className="col-1 text-end"
         onClick={() => {
           deleteTodoItem(item.id);
         }}
       >
-        <i className="bi bi-trash" style={{ fontSize: "1.5rem", color: "red" }}></i>
+        <i
+          className="bi bi-trash"
+          style={
+            dark
+              ? { fontSize: "1.5rem", color: "black" }
+              : { fontSize: "1.5rem", color: "red" }
+          }
+        ></i>
       </div>
     </div>
   );

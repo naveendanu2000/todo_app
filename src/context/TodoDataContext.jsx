@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from "react";
 export const TodoDataContext = createContext();
 
 export const TodoDataProvider = ({ children }) => {
+
   const [filter, setFilter] = useState({
     all: true,
     important: false,

@@ -19,17 +19,14 @@
 
 #message {
   border: 0.5px solid rgba(255, 255, 255, 0);
-  background-color: "#acffd9e8";
 }
+
 #search {
   border: 0.5px solid rgba(255, 255, 255, 0);
-  background-color: "#acffd9e8";
 }
 
 #search:focus {
   outline: none;
-  border: 0.5px solid green;
-  background-color: "#acffd9e8";
 }
 
 #message:focus {

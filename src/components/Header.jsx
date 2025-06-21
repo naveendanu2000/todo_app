@@ -1,10 +1,14 @@
+import { useContext } from "react";
 import ToggleButton from "./ToggleButton";
+import { ThemeContext } from "../context/ThemeContext";
 
 const Header = () => {
+  const { dark } = useContext(ThemeContext);
+
   return (
     <div
-      className="row border border-bottom"
-      style={{ padding: "1rem"}}
+      className="row border-bottom border-secondary-subtle px-5 py-2"
+      style={dark ? { backgroundColor: "#000000db", border: "none" } : {}}
     >
       <div className="col-11 text-center">
         <h1>tO dO lIST</h1>

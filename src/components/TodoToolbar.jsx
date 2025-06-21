@@ -1,19 +1,23 @@
 import { TodoDataContext } from "../context/TodoDataContext";
+import { ThemeContext } from "../context/ThemeContext";
 import { useContext } from "react";
 
 const TodoToolBar = () => {
   const { filter, toggleFilter } = useContext(TodoDataContext);
+  const { dark } = useContext(ThemeContext);
 
   return (
     <div className="row text-center px-5">
-      <div
-        className="col-8"
-        style={{ padding: "1.5rem 2rem", backgroundColor: "#acffd9e8" }}
-      >
+      <div className="col-8" style={{ padding: "1.5rem 2rem" }}>
         <input
           placeholder="Search"
           id="search"
           className="w-100 p-1 text-center rounded-3"
+          style={
+            !dark
+              ? { backgroundColor: "#d5ffece8" }
+              : { backgroundColor: "#1c1c1c", color: "white" }
+          }
         />
       </div>
       <div className="align-content-center col-1">
