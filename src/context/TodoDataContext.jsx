@@ -38,7 +38,6 @@ export const TodoDataProvider = ({ children }) => {
   };
 
   //CRUD operations
-
   const getNextId = () => {
     let nextId = 0;
     todoList.map((item) => {
@@ -56,11 +55,13 @@ export const TodoDataProvider = ({ children }) => {
     ]);
   };
 
-  const deleteTodoItem = () => {};
+  const deleteTodoItem = (id) => {
+    setTodoList(todoList.filter((item) => item.id !== id));
+  };
 
   return (
     <TodoDataContext.Provider
-      value={{ filter, toggleFilter, toggleAll, addTodoItem, copyTodo }}
+      value={{ filter, toggleFilter, toggleAll, addTodoItem, copyTodo, deleteTodoItem }}
     >
       {children}
     </TodoDataContext.Provider>
