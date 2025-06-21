@@ -7,6 +7,7 @@ export const TodoDataProvider = ({ children }) => {
   const [todoList, setTodoList] = useState([]);
   const [copyTodo, setCopyTodo] = useState([]);
 
+  //Filter Operations
   const toggleAll = () => {
     if (!filter.completed && filter.important) {
       setFilter((prev) => ({ ...prev, completed: true }));
@@ -20,13 +21,6 @@ export const TodoDataProvider = ({ children }) => {
     }
   };
 
-  const addTodoItem = (message, important) => {
-    setTodoList((prev) => [
-      ...prev,
-      { message: message, important: important, completed: false },
-    ]);
-  };
-
   useEffect(() => {
     if (filter.completed) {
       setCopyTodo(todoList.filter((item) => item.completed));
@@ -37,11 +31,32 @@ export const TodoDataProvider = ({ children }) => {
     } else {
       setCopyTodo(todoList.filter((item) => !item.completed));
     }
-  }, [filter]);
+  }, [filter, todoList]);
 
   const toggleFilter = (key) => {
     setFilter((prev) => ({ ...prev, [key]: !prev[key] }));
   };
+
+  //CRUD operations
+
+  const getNextId = () => {
+    let nextId = 0;
+    todoList.map((item) => {
+      item.id > nextId ? (nextId = item.id) : nextId;
+    });
+
+    return nextId;
+  };
+
+  const addTodoItem = (message, important) => {
+    const nextId = getNextId() + 1;
+    setTodoList((prev) => [
+      ...prev,
+      { id: nextId, message: message, important: important, completed: false },
+    ]);
+  };
+
+  const deleteTodoItem = () => {};
 
   return (
     <TodoDataContext.Provider

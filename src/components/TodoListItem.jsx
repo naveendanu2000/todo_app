@@ -1,8 +1,4 @@
-import { useContext } from "react";
-import { TodoDataContext } from "../context/TodoDataContext";
-
 const TodoListItem = ({ item }) => {
-  const { copyTodo } = useContext(TodoDataContext);
 
   return (
     <div className="row my-3 mx-5">
