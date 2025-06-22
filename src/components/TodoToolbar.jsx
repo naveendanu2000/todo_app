@@ -31,7 +31,10 @@ const TodoToolBar = () => {
           className="mx-2"
           type="checkbox"
           id="all"
-          checked={filter.all}
+          checked={
+            filter.all ||
+            (!filter.completed && !filter.important && !filter.todo)
+          }
           onChange={() => {
             toggleFilter("all");
           }}

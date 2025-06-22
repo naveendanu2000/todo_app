@@ -10,7 +10,7 @@ const Footer = () => {
   const [todoCount, setTodoCount] = useState(0);
 
   useEffect(() => {
-    console.log("---------------======-------------- Counting called!");
+    // console.log("---------------======-------------- Counting called!");
     setAllCount(0);
     setCompletedCount(0);
     setImportantCount(0);

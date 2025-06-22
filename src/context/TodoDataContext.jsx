@@ -13,23 +13,20 @@ export const TodoDataProvider = ({ children }) => {
   const [copyTodo, setCopyTodo] = useState([]);
 
   useEffect(() => {
-    if (filter.all) {
-      setCopyTodo(todoList.filter((item) => item));
-    }
-    if (filter.important) {
-      setCopyTodo(todoList.filter((item) => item.important));
-    }
-    if (filter.completed) {
-      setCopyTodo(todoList.filter((item) => item.completed));
-    }
-    if (filter.todo) {
-      setCopyTodo(todoList.filter((item) => !item.completed));
-    }
     if (filter.important && filter.completed) {
       setCopyTodo(todoList.filter((item) => item.important && item.completed));
-    }
-    if (filter.important && filter.todo) {
+    } else if (filter.important && filter.todo) {
       setCopyTodo(todoList.filter((item) => item.important && !item.completed));
+    } else if (filter.completed) {
+      setCopyTodo(todoList.filter((item) => item.completed));
+    } else if (filter.important) {
+      setCopyTodo(todoList.filter((item) => item.important));
+    } else if (filter.todo) {
+      setCopyTodo(todoList.filter((item) => !item.completed));
+    } else if (filter.all) {
+      setCopyTodo(todoList);
+    } else {
+      setCopyTodo(todoList);
     }
   }, [filter, todoList]);
 
@@ -74,6 +71,14 @@ export const TodoDataProvider = ({ children }) => {
     // console.log(message, important, "called");
   };
 
+  const handleEdit = (id, message) => {
+    setTodoList((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, message: message } : item
+      )
+    );
+  };
+
   const toggleCompleted = (id) => {
     setTodoList((prev) =>
       prev.map((item) =>
@@ -106,6 +111,7 @@ export const TodoDataProvider = ({ children }) => {
         toggleCompleted,
         handleSearch,
         todoList,
+        handleEdit,
       }}
     >
       {children}
