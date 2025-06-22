@@ -1,10 +1,15 @@
 import { TodoDataContext } from "../context/TodoDataContext";
 import { ThemeContext } from "../context/ThemeContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const TodoToolBar = () => {
-  const { filter, toggleFilter } = useContext(TodoDataContext);
+  const { filter, toggleFilter, handleSearch } = useContext(TodoDataContext);
   const { dark } = useContext(ThemeContext);
+  const [searchText, setSearchText] = useState("");
+
+  useEffect(() => {
+    handleSearch(searchText);
+  }, [searchText]);
 
   return (
     <div className="row text-center px-5">
@@ -18,6 +23,7 @@ const TodoToolBar = () => {
               ? { backgroundColor: "#d5ffece8" }
               : { backgroundColor: "#1c1c1c", color: "white" }
           }
+          onChange={(e) => setSearchText(e.target.value)}
         />
       </div>
       <div className="align-content-center col-1">

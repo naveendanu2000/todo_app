@@ -3,7 +3,6 @@ import { createContext, useEffect, useState } from "react";
 export const TodoDataContext = createContext();
 
 export const TodoDataProvider = ({ children }) => {
-
   const [filter, setFilter] = useState({
     all: true,
     important: false,
@@ -87,6 +86,15 @@ export const TodoDataProvider = ({ children }) => {
     setTodoList(todoList.filter((item) => item.id !== id));
   };
 
+  //Search Logic
+  const handleSearch = (searchText) => {
+    setCopyTodo(
+      todoList.filter((item) =>
+        item.message.toLowerCase().includes(searchText.toLowerCase())
+      )
+    );
+  };
+
   return (
     <TodoDataContext.Provider
       value={{
@@ -96,6 +104,7 @@ export const TodoDataProvider = ({ children }) => {
         copyTodo,
         deleteTodoItem,
         toggleCompleted,
+        handleSearch,
       }}
     >
       {children}
