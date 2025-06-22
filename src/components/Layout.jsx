@@ -42,8 +42,8 @@ const Layout = () => {
           className="rounded-top-4 position-fixed bottom-0 z-1 translate-middle-x shadow px-5"
           style={
             dark
-              ? { backgroundColor: "#000000ed", left: "47.38%", width: "92%" }
-              : { backgroundColor: "#acffd9f0", left: "47.38%", width: "92%" }
+              ? { backgroundColor: "#000000ed", left: "50%", width: "92%" }
+              : { backgroundColor: "#acffd9f0", left: "50%", width: "92%" }
           }
         >
           <Footer />

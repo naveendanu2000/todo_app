@@ -71,7 +71,7 @@ export const TodoDataProvider = ({ children }) => {
       { id: nextId, message: message, important: important, completed: false },
     ]);
 
-    console.log(message, important, "called");
+    // console.log(message, important, "called");
   };
 
   const toggleCompleted = (id) => {
@@ -105,6 +105,7 @@ export const TodoDataProvider = ({ children }) => {
         deleteTodoItem,
         toggleCompleted,
         handleSearch,
+        todoList,
       }}
     >
       {children}
