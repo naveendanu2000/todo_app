@@ -9,6 +9,7 @@
   align-content: center;
 }
 
+<<<<<<< HEAD
 .dark-header {
   color: white;
   background-color: black;
@@ -17,4 +18,28 @@
 
 .toggle-dark:focus {
   box-shadow: 0 0 0 0.25rem rgba(219, 219, 219, 0.61);
+=======
+.add-todo {
+  position: fixed;
+  bottom: 2rem;
+  width: 80%;
+  left: 47.35%;
+  transform: translate(-50%, -50%);
+}
+
+#message {
+  border: 0.5px solid rgba(255, 255, 255, 0);
+}
+
+#search {
+  border: 0.5px solid rgba(255, 255, 255, 0);
+}
+
+#search:focus {
+  outline: none;
+}
+
+#message:focus {
+  outline: none;
+>>>>>>> 6cff3971b89b09a64752919d2652b4e6a9ca8e30
 }

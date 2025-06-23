@@ -1,14 +1,56 @@
-import { ThemeProvider } from "../context/ThemeContext";
-import Header from './Header';
+import { ThemeContext } from "../context/ThemeContext";
+import { TodoDataProvider } from "../context/TodoDataContext";
+import AddTodo from "./AddTodo";
+import Header from "./Header";
+import TodoToolBar from "./TodoToolbar";
+import TodoMain from "./TodoMain";
+import { useContext, useEffect } from "react";
+import Footer from "./Footer";
 
-const Layout = ()=>{
-   return (
+const Layout = () => {
+  const { dark } = useContext(ThemeContext);
+
+  useEffect(() => {
+    document.body.style.backgroundColor = dark ? "#000c" : "#fff";
+    document.body.style.color = dark ? "#fff" : "#222";
+
+    // Optional: Clean up on unmount
+    return () => {
+      document.body.style.backgroundColor = "";
+      document.body.style.color = "";
+    };
+  }, [dark]);
+
+  return (
     <div>
-        <ThemeProvider>
-            <Header />
-        </ThemeProvider>
+      <TodoDataProvider>
+        <div
+          className="rounded-bottom-4 position-fixed top-0 w-100 z-1 shadow"
+          style={
+            dark
+              ? { backgroundColor: "#000000cc" }
+              : { backgroundColor: "#acffd9e8" }
+          }
+        >
+          <Header />
+          <TodoToolBar />
+        </div>
+        <TodoMain />
+        <AddTodo />
+
+        <div
+          className="rounded-top-4 position-fixed bottom-0 z-1 translate-middle-x shadow px-5"
+          style={
+            dark
+              ? { backgroundColor: "#000000ed", left: "50%", width: "92%" }
+              : { backgroundColor: "#acffd9f0", left: "50%", width: "92%" }
+          }
+        >
+          <Footer />
+        </div>
+      </TodoDataProvider>
     </div>
-   ); 
-}
+  );
+};
 
 export default Layout;
