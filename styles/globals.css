@@ -9,16 +9,6 @@
   align-content: center;
 }
 
-<<<<<<< HEAD
-.dark-header {
-  color: white;
-  background-color: black;
-  box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.13);
-}
-
-.toggle-dark:focus {
-  box-shadow: 0 0 0 0.25rem rgba(219, 219, 219, 0.61);
-=======
 .add-todo {
   position: fixed;
   bottom: 2rem;
@@ -41,5 +31,4 @@
 
 #message:focus {
   outline: none;
->>>>>>> 6cff3971b89b09a64752919d2652b4e6a9ca8e30
 }
