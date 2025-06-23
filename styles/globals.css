@@ -8,3 +8,13 @@
 .toggle-button div {
   align-content: center;
 }
+
+.dark-header {
+  color: white;
+  background-color: black;
+  box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.13);
+}
+
+.toggle-dark:focus {
+  box-shadow: 0 0 0 0.25rem rgba(219, 219, 219, 0.61);
+}
