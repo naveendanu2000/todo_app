@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { TodoDataContext } from "../context/TodoDataContext";
 import { ThemeContext } from "../context/ThemeContext";
+import { memo } from "react";
 
 const TodoListItem = ({ item }) => {
   const { deleteTodoItem, toggleCompleted, handleEdit } =
@@ -108,4 +109,4 @@ const TodoListItem = ({ item }) => {
   );
 };
 
-export default TodoListItem;
+export default memo(TodoListItem);

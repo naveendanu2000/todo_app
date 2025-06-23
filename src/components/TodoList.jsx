@@ -5,10 +5,10 @@ import TodoListItem from "./TodoListItem";
 const TodoList = () => {
   const { copyTodo } = useContext(TodoDataContext);
 
-  return(
+  return (
     <div>
       {copyTodo.map((item) => (
-        <TodoListItem item={item} />
+        <TodoListItem key={item.id} item={item} />
       ))}
     </div>
   );
