@@ -1,8 +1,23 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 
 export const TodoDataContext = createContext();
 
 export const TodoDataProvider = ({ children }) => {
+  //data Fetching
+
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     try {
+  //       const response = await fetch("/data/todo.json");
+  //       const data = await response.json();
+  //       setTodoList(data);
+  //     } catch (error) {
+  //       console.error("Error Reading the file.", error);
+  //     }
+  //   };
+  //   getData();
+  // }, []);
+
   const [filter, setFilter] = useState({
     all: true,
     important: false,
@@ -71,25 +86,29 @@ export const TodoDataProvider = ({ children }) => {
     // console.log(message, important, "called");
   };
 
-  const handleEdit = (id, message) => {
+  const handleEdit = useCallback((id, message) => {
     setTodoList((prev) =>
       prev.map((item) =>
         item.id === id ? { ...item, message: message } : item
       )
     );
-  };
+  }, []);
 
-  const toggleCompleted = (id) => {
+  const toggleCompleted = useCallback((id) => {
     setTodoList((prev) =>
       prev.map((item) =>
         item.id === id ? { ...item, completed: !item.completed } : item
       )
     );
-  };
+  }, []);
 
-  const deleteTodoItem = (id) => {
+  // When to use useCallback
+  // If you pass a function (like toggleCompleted, deleteTodoItem, handleEdit, etc.) as a prop to a memoized child component (e.g., TodoListItem wrapped in React.memo),
+  // Without useCallback, a new function instance is created on every render, causing the memoized child to re-render even if its props/data haven't changed.
+
+  const deleteTodoItem = useCallback((id) => {
     setTodoList(todoList.filter((item) => item.id !== id));
-  };
+  }, []);
 
   //Search Logic
   const handleSearch = (searchText) => {
