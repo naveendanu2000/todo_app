@@ -14,6 +14,10 @@ const nextConfig = {
   output: 'export',
   basePath,
   assetPrefix,
+  // Static export can't use Next's Image Optimization API — disable it for static export
+  images: {
+    unoptimized: true,
+  },
   // Using trailingSlash makes Next generate folder-based routes which work well on GitHub Pages
   trailingSlash: true,
 };

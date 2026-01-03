@@ -52,4 +52,5 @@ Quick deploy steps:
 Notes:
 - By default the workflow will set `BASE_PATH` automatically to `/<repo-name>` for *project pages* (e.g. `username.github.io/repo`) and to empty for *user/organization pages* (e.g. `username.github.io`). For this repository (`naveendanu2000/todo_app`) the workflow explicitly uses `BASE_PATH=/todo_app` so it deploys correctly under `https://naveendanu2000.github.io/todo_app/`. You can override this behavior by adding a repository secret named `BASE_PATH` with your desired value (e.g. `/repo-name` or `repo-name`).
 - Because GitHub Pages serves static files, Next.js server features (API routes, getServerSideProps, etc.) are not supported; only static exportable pages will be deployed.
+- If your app uses `next/image`, add `images: { unoptimized: true }` to `next.config.mjs` because the Image Optimization API is not available for static exports.
 - If you use a custom domain or special routing, adjust `BASE_PATH` and `next.config.mjs` accordingly.
