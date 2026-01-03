@@ -46,7 +46,7 @@ jobs:
           fi
         shell: bash
 
-      - name: Build (next build with output: 'export')
+      - name: "Build (next build with output: 'export')"
         env:
           BASE_PATH: ${{ env.BASE_PATH }}
         run: |
