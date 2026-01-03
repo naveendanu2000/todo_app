@@ -38,3 +38,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+
+## Deploy to GitHub Pages
+
+This repository includes a GitHub Actions workflow `.github/workflows/deploy-gh-pages.yml` that builds the app and uses `next export` to produce a static `out/` directory which is deployed to GitHub Pages.
+
+Notes:
+- By default the workflow will set `BASE_PATH` automatically to `/<repo-name>` for *project pages* (e.g. `username.github.io/repo`) and to empty for *user/organization pages* (e.g. `username.github.io`). For this repository (`naveendanu2000/todo_app`) the workflow explicitly uses `BASE_PATH=/todo_app` so it deploys correctly under `https://naveendanu2000.github.io/todo_app/`. You can override this behavior by adding a repository secret named `BASE_PATH` with your desired value (e.g. `/repo-name` or `repo-name`).
+- Because GitHub Pages serves static files, Next.js server features (API routes, getServerSideProps, etc.) are not supported; only static exportable pages will be deployed.
+- If you use a custom domain or special routing, adjust `BASE_PATH` and `next.config.mjs` accordingly.

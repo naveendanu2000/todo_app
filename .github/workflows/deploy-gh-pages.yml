@@ -1,0 +1,62 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure BASE_PATH
+        # If you set a repository secret `BASE_PATH`, it will be used as-is.
+        # Otherwise, this sets BASE_PATH to `''` for user pages (username.github.io) or `/<repo>` for project pages.
+        # For this repository (naveendanu2000/todo_app) we set BASE_PATH explicitly to `/todo_app`.
+        run: |
+          if [ -n "${{ secrets.BASE_PATH }}" ]; then
+            echo "BASE_PATH=${{ secrets.BASE_PATH }}" >> $GITHUB_ENV
+          else
+            repo="${{ github.event.repository.name }}"
+            owner="${{ github.repository_owner }}"
+            if [ "$repo" = "$owner.github.io" ]; then
+              echo "BASE_PATH=" >> $GITHUB_ENV
+            elif [ "$owner" = "naveendanu2000" ] && [ "$repo" = "todo_app" ]; then
+              echo "BASE_PATH=/todo_app" >> $GITHUB_ENV
+            else
+              echo "BASE_PATH=/$repo" >> $GITHUB_ENV
+            fi
+          fi
+        shell: bash
+
+      - name: Build and export (next export)
+        env:
+          BASE_PATH: ${{ env.BASE_PATH }}
+        run: |
+          npm run build
+          npm run export
+
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: './out'
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
