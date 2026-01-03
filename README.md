@@ -43,6 +43,12 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/b
 
 This repository includes a GitHub Actions workflow `.github/workflows/deploy-gh-pages.yml` that builds the app and uses `next export` to produce a static `out/` directory which is deployed to GitHub Pages.
 
+Quick deploy steps:
+
+1. Push your changes to the `master` branch (the workflow triggers on `master`).
+2. Optionally set a repository secret `BASE_PATH` to override the automatic base path.
+3. Check the Actions tab to monitor the build and Pages settings for the published URL.
+
 Notes:
 - By default the workflow will set `BASE_PATH` automatically to `/<repo-name>` for *project pages* (e.g. `username.github.io/repo`) and to empty for *user/organization pages* (e.g. `username.github.io`). For this repository (`naveendanu2000/todo_app`) the workflow explicitly uses `BASE_PATH=/todo_app` so it deploys correctly under `https://naveendanu2000.github.io/todo_app/`. You can override this behavior by adding a repository secret named `BASE_PATH` with your desired value (e.g. `/repo-name` or `repo-name`).
 - Because GitHub Pages serves static files, Next.js server features (API routes, getServerSideProps, etc.) are not supported; only static exportable pages will be deployed.
