@@ -54,9 +54,9 @@ jobs:
           npm run export
 
       - name: Upload artifact for GitHub Pages
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: './out'
+          path: './out'  # v4 uses a newer upload-artifact internally and avoids deprecated v3
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
