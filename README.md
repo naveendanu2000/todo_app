@@ -41,7 +41,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/b
 
 ## Deploy to GitHub Pages
 
-This repository includes a GitHub Actions workflow `.github/workflows/deploy-gh-pages.yml` that builds the app and uses `next export` to produce a static `out/` directory which is deployed to GitHub Pages.
+This repository includes a GitHub Actions workflow `.github/workflows/deploy-gh-pages.yml` that builds the app using `output: 'export'` (set in `next.config.mjs`). `next build` produces the static `out/` directory which is deployed to GitHub Pages; the workflow runs `npm run build` (no `next export` command).
 
 Quick deploy steps:
 

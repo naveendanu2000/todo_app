@@ -46,12 +46,11 @@ jobs:
           fi
         shell: bash
 
-      - name: Build and export (next export)
+      - name: Build (next build with output: 'export')
         env:
           BASE_PATH: ${{ env.BASE_PATH }}
         run: |
           npm run build
-          npm run export
 
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v4

@@ -9,9 +9,12 @@ const assetPrefix = basePath || '';
 
 const nextConfig = {
   reactStrictMode: true,
+  // Use the new static export mode. `output: 'export'` makes `next build` generate a static `out/` directory
+  // (replaces the deprecated `next export` command).
+  output: 'export',
   basePath,
   assetPrefix,
-  // Using trailingSlash makes `next export` emit folder-based routes which work well on GitHub Pages
+  // Using trailingSlash makes Next generate folder-based routes which work well on GitHub Pages
   trailingSlash: true,
 };
 
